@@ -31,7 +31,6 @@
     "mime-types": "^2.1.30",
     "node-forge": "^0.10.0",
     "nodejs-jsencrypt": "^3.0.0-rc.1",
-    "python-shell": "^3.0.0",
     "qrcode": "^1.4.4",
     "qrcode-reader": "^1.0.4",
     "scryptsy": "^2.1.0",
