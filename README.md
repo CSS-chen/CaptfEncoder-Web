@@ -44,7 +44,10 @@ The router uses hash mode (`/#/extensions/...`), so no SPA rewrite is required.
 
 ## Testing
 
-The project includes a Puppeteer smoke test that exercises representative algorithms, file uploads, QR codes, GIF extraction, EXIF parsing, and renders all 72 extension pages.
+The project includes two Puppeteer suites:
+
+- `npm run smoke` — UI smoke test: representative tools, file uploads, QR codes, GIF extraction, EXIF parsing, About dialog, and all 72 extension pages.
+- `npm run algorithms` — full algorithm regression: all **150 controllers** are executed. It verifies encode/decode round-trips, known hash/HMAC/CRC vectors, file/image tools, and RSA key generation.
 
 ```bash
 npm run build
@@ -52,15 +55,17 @@ npm run preview        # http://localhost:3000
 
 # in another terminal
 BASE_URL=http://localhost:3000/ npm run smoke
+BASE_URL=http://localhost:3000/ npm run algorithms
 ```
 
 PowerShell:
 
 ```powershell
 $env:BASE_URL="http://localhost:3000/"; npm run smoke
+$env:BASE_URL="http://localhost:3000/"; npm run algorithms
 ```
 
-The test uses the locally installed Chrome. Set `CHROME_PATH` if Chrome is installed elsewhere.
+The tests use the locally installed Chrome. Set `CHROME_PATH` if Chrome is installed elsewhere.
 
 ## Project structure
 

@@ -8,29 +8,43 @@ module.exports = async function (input, options = {}) {
             if (input && input.length > 0) { 
                 let keySquare = defaultValue(options.keySquare, '');
 
-                let plaintext = input.replace(/[^a-z]/g, "").replace(/[j]/g, "i");  
-                keySquare = keySquare.replace(/[^a-z]/g, ""); 
-            
-                if(plaintext.length < 1){ 
+                let normalized = input.toLowerCase().replace(/[^a-z]/g, "").replace(/[j]/g, "i");
+                keySquare = keySquare.toLowerCase().replace(/[^a-z]/g, "");
+
+                if(normalized.length < 1){
                     throw new Error("Please enter some plaintext (letters and numbers only)");
-                } 
-                if(keySquare.length != 25){ 
-                    throw new Error("Key square must be 25 characters in length"); 
                 }
-                
-                while(plaintext.length % 2 != 0) {
-                    plaintext += "x";    
-                } 
-            
-                var ciphertext = "";
-            
-                for(let i=0; i<plaintext.length; i+=2){
-                    var a = plaintext.charAt(i); 
-                    var b = plaintext.charAt(i+1); 
-                    if(a == b) {
-                        b = "x";
+                if(keySquare.length != 25){
+                    throw new Error("Key square must be 25 characters in length");
+                }
+
+                // Standard Playfair preprocessing: insert a filler between
+                // repeated letters in the same digraph and pad with x.
+                let plaintext = "";
+                for (let i = 0; i < normalized.length; i += 2) {
+                    const a = normalized.charAt(i);
+                    let b = normalized.charAt(i + 1);
+
+                    if (!b) {
+                        plaintext += a + "x";
+                        break;
                     }
-                    
+
+                    if (a === b) {
+                        plaintext += a + (a === "x" ? "q" : "x");
+                        i--;
+                        continue;
+                    }
+
+                    plaintext += a + b;
+                }
+
+                var ciphertext = "";
+
+                for(let i=0; i<plaintext.length; i+=2){
+                    var a = plaintext.charAt(i);
+                    var b = plaintext.charAt(i+1);
+
                     var row1 = Math.floor(keySquare.indexOf(a) / 5);
                     var col1 = keySquare.indexOf(a) % 5;
                     var row2 = Math.floor(keySquare.indexOf(b) / 5);

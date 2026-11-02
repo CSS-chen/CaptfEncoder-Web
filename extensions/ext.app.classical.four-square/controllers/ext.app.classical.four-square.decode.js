@@ -35,7 +35,10 @@ module.exports = async function (input, options = {}) {
                     plaintext += rt.charAt(5 * d + a);
                 }
 
-                return plaintext.toUpperCase();
+                return resolve({
+                    success: true,
+                    output: plaintext.toUpperCase(),
+                });
             }
 
             return resolve({

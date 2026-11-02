@@ -44,7 +44,10 @@ npm run preview   # 本地预览 dist/
 
 ## 验证
 
-项目包含基于 Puppeteer 的冒烟测试，覆盖主要算法、文件上传、二维码、GIF 拆帧、EXIF 解析，并会渲染全部 72 个扩展页面。
+项目包含两套基于 Puppeteer 的测试：
+
+- `npm run smoke`：UI 冒烟测试，覆盖代表性工具、文件上传、二维码、GIF 拆帧、EXIF、关于弹窗，并渲染全部 72 个扩展页面。
+- `npm run algorithms`：全量算法回归，实际执行全部 **150 个 controller**，验证编码/解码往返、Hash/HMAC/CRC 已知向量、文件/图片工具以及 RSA 密钥生成。
 
 ```bash
 npm run build
@@ -52,12 +55,14 @@ npm run preview        # http://localhost:3000
 
 # 另开终端
 BASE_URL=http://localhost:3000/ npm run smoke
+BASE_URL=http://localhost:3000/ npm run algorithms
 ```
 
 PowerShell：
 
 ```powershell
 $env:BASE_URL="http://localhost:3000/"; npm run smoke
+$env:BASE_URL="http://localhost:3000/"; npm run algorithms
 ```
 
 测试使用本机已安装的 Chrome，可通过 `CHROME_PATH` 指定浏览器路径。

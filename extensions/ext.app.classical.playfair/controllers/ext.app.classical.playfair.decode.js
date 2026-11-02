@@ -66,8 +66,27 @@ module.exports = async function (input, options = {}) {
                     }
                     plaintext += c + d;
                 }
-                
-                output = plaintext.toUpperCase();
+
+                // Remove fillers inserted between repeated letters and the
+                // trailing padding x added during encryption.
+                let cleaned = "";
+                for (let i = 0; i < plaintext.length; i++) {
+                    const ch = plaintext.charAt(i);
+                    if (
+                        ch === "x" &&
+                        i > 0 &&
+                        i < plaintext.length - 1 &&
+                        plaintext.charAt(i - 1) === plaintext.charAt(i + 1)
+                    ) {
+                        continue;
+                    }
+                    cleaned += ch;
+                }
+                if (cleaned.endsWith("x")) {
+                    cleaned = cleaned.slice(0, -1);
+                }
+
+                output = cleaned.toUpperCase();
             }
 
             return resolve({

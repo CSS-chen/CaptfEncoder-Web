@@ -27,8 +27,8 @@ module.exports = async function (input, options = {}) {
                 }
 
                 if (encryptedStr) {
-                    const decipher = forge.rc2.createEncryptionCipher(key);
-                    decipher.start(iv);
+                    const decipher = forge.rc2.createDecryptionCipher(key);
+                    decipher.start(iv || null);
                     decipher.update(forge.util.createBuffer(encryptedStr));
                     decipher.finish();
 

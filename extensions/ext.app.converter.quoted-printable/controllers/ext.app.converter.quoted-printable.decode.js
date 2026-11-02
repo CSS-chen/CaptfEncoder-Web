@@ -11,8 +11,11 @@ module.exports = async function (input, options = {}) {
 
                 const str = input.replace(/=(?:\r?\n|$)/g, "");
                 var arr = mimeDecode(str);
-            
-                return uint8ArrayToStr(new Uint8Array(arr), encoding);
+
+                return resolve({
+                    success: true,
+                    output: uint8ArrayToStr(new Uint8Array(arr), encoding),
+                });
             }
 
             return resolve({

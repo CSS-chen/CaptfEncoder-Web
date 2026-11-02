@@ -24,7 +24,10 @@ module.exports = async function (input, options = {}) {
                         (((keyword.charCodeAt(i % keyword.length) - 97) - (ciphertext.charCodeAt(i) - 97) + 26) % 26) + 97);
                 }
 
-                return plaintext;
+                return resolve({
+                    success: true,
+                    output: plaintext,
+                });
             }
 
             return resolve({

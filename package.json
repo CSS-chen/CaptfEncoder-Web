@@ -10,7 +10,8 @@
     "prebuild": "npm run gen",
     "build": "webpack --config webpack.config.js --mode production",
     "preview": "npx --yes serve dist",
-    "smoke": "node scripts/smoke-test.js"
+    "smoke": "node scripts/smoke-test.js",
+    "algorithms": "node scripts/algorithm-test.js"
   },
   "engines": {
     "node": ">=18"

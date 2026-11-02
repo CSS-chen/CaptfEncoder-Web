@@ -52,6 +52,21 @@ export function getControllerIds() {
   return Object.keys(controllers);
 }
 
+// Test-only hook: expose the registry when the page is opened with
+// ?__test=1. It lets the Puppeteer suite exercise every controller directly.
+if (
+  typeof window !== 'undefined' &&
+  /(?:^|[?&])__test=1(?:&|$)/.test(window.location.search)
+) {
+  window.__CAPTF_TEST__ = {
+    controllers,
+    views,
+    getController,
+    getView,
+    getControllerIds,
+  };
+}
+
 /**
  * Fallback component for an extension that has no view in this build.
  */

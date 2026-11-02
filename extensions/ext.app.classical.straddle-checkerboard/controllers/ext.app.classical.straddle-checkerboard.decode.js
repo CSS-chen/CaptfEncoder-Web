@@ -19,7 +19,7 @@ module.exports = async function (input, options = {}) {
                 if (key.length != 26) {
                     throw new Error("Key square must be 26 characters in length");
                 }
-                if (num.length != 2) {
+                if (numbers.length != 2) {
                     throw new Error("There must be 2 numbers provided also e.g. '3 7'");
                 }
 

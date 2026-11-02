@@ -11,7 +11,10 @@ module.exports = async function (input, options = {}) {
                 let plaintext = input;
 
                 if (number == 1) {
-                  return plaintext;
+                  return resolve({
+                    success: true,
+                    output: plaintext,
+                  });
                 }
             
                 var ciphertext = "";
