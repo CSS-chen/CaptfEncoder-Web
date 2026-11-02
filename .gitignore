@@ -1,0 +1,17 @@
+node_modules
+dist
+logs/
+.vercel
+scripts/.tmp/
+smoke-*.png
+src/generated/
+*.pyc
+__pycache__/
+
+# Legacy Electron artifacts (not part of the web build)
+main/
+renderer/
+images/
+package.electron.json
+product.json
+changelog.json
