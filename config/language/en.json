@@ -39,7 +39,11 @@
                 "title": "About",
                 "desc": "Extensible cross platform network security toolkit",
                 "version": "Version",
-                "build_date": "Build date"
+                "build_date": "Build date",
+                "based_on": "Based on",
+                "secondary_development": "(secondary development)",
+                "official_site": "Official website",
+                "project_repo": "Project repository"
             },
             "check_update": {
                 "title": "Check update",

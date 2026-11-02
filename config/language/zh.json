@@ -39,7 +39,11 @@
                 "title": "关于",
                 "desc": "可扩展跨平台网络安全工具套件",
                 "version": "版本",
-                "build_date": "发布日期"
+                "build_date": "发布日期",
+                "based_on": "本项目基于",
+                "secondary_development": "二次开发",
+                "official_site": "官方网站",
+                "project_repo": "项目仓库"
             },
             "check_update": {
                 "title": "检查更新",

@@ -62,7 +62,7 @@
               </v-list-item-content>
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item @click="openSite">
+            <v-list-item @click="openOfficialSite">
               <v-list-item-icon>
                 <v-icon>mdi-github</v-icon>
               </v-list-item-icon>
@@ -327,6 +327,10 @@ export default {
 
     openSite() {
       this.$openExternalUrl("https://github.com/CSS-chen/CaptfEncoder-Web");
+    },
+
+    openOfficialSite() {
+      this.$openExternalUrl("https://github.com/guyoung/CaptfEncoder");
     },
 
     openIssues() {
